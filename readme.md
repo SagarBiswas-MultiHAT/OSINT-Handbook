@@ -162,7 +162,24 @@ When the focus of an investigation is an individual, open sources can yield:
 - Personal email addresses and phone numbers
 - Evidence of past data breaches, including compromised passwords
 
-![Personal_Intelligence](Personal_Intelligence.svg)
+```mermaid
+flowchart TB
+  %% Compact, readable layout for quick visual scanning
+  classDef root fill:#1f3a5f,stroke:#0f1a2b,color:#fff,font-weight:bold;
+  classDef node fill:#e0e9f0,stroke:#9bb7d4,color:#1f2e3d;
+
+  OSINT["Digital Breadcrumbs<br/>What OSINT Can Find"]:::root
+
+  Org["Organization<br/>• Employee names<br/>• Email formats<br/>• Office locations"]:::node
+  Net["Network<br/>• IP ranges & ASNs<br/>• Domains & DNS records"]:::node
+  Sys["Systems<br/>• Server types & versions<br/>• Exposed services"]:::node
+  Pers["Personal<br/>• Social profiles<br/>• Geotagged photos<br/>• Breach data"]:::node
+
+  OSINT --> Org
+  OSINT --> Net
+  OSINT --> Sys
+  OSINT --> Pers
+```
 
 ---
 
@@ -276,18 +293,21 @@ Let us put theory into practice with a real-world example of how an OSINT invest
 Here is how a structured OSINT workflow would look:
 
 ```mermaid
-flowchart TD
-    A([Target: examplecorp.com]) --> B
+flowchart LR
+    %% Compact, styled left-to-right workflow for readability
+    classDef start fill:#1f3a5f,stroke:#0f1a2b,color:#fff,font-weight:bold;
+    classDef step fill:#e0e9f0,stroke:#9bb7d4,color:#1f2e3d;
+    classDef final fill:#2d5a7b,stroke:#123,color:#fff,font-weight:bold;
 
-    B[Step 1: Network Info\nIdentify IP address\nIdentify ASN via ipinfo.io\nIdentify servers if possible]
+    Start([Target: examplecorp.com]):::start
 
-    B --> C[Step 2: Website and Network Architecture\nDNS records, subdomains\nWHOIS lookup via lookup.icann.org\nWeb technologies\nIdentify admins]
+    S1["Step 1: Network Info<br/>• Identify IP address<br/>• Identify ASN via ipinfo.io<br/>• Identify servers"]:::step
+    S2["Step 2: Website & Network Architecture<br/>• DNS records & subdomains<br/>• WHOIS lookup<br/>• Web technologies / admins"]:::step
+    S3["Step 3: Employee Info<br/>• Gather emails & phone numbers<br/>• theHarvester / Hunter.io<br/>• LinkedIn & Google Dorks — site:examplecorp.com filetype:pdf"]:::step
+    S4["Step 4: Search for Leaks<br/>• Check HaveIBeenPwned<br/>• Search breach directories"]:::step
+    S5["Step 5: Analyze & Report<br/>• Connect gathered data<br/>• Build intelligence picture<br/>• Deliver findings"]:::final
 
-    C --> D[Step 3: Employee Info\nGather emails and phone numbers\nUse theHarvester and Hunter.io\nSearch LinkedIn\nUse Google Dorks for documents\ne.g. site:examplecorp.com filetype:pdf]
-
-    D --> E[Step 4: Search for Leaks\nCheck HaveIBeenPwned\nSearch breach directories\nLook for compromised credentials]
-
-    E --> F([Step 5: Analyze and Report\nConnect all gathered data\nBuild the intelligence picture\nDeliver findings])
+    Start --> S1 --> S2 --> S3 --> S4 --> S5
 ```
 
 Let us walk through each step in detail.
