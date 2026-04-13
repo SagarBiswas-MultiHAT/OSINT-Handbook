@@ -162,37 +162,7 @@ When the focus of an investigation is an individual, open sources can yield:
 - Personal email addresses and phone numbers
 - Evidence of past data breaches, including compromised passwords
 
-```mermaid
-mindmap
-  root((OSINT))
-    Organization_Info
-      ::icon(fa fa-building)
-      Employee names/titles
-      Email address formats
-      Phone numbers
-      Office locations
-      Internal tech stack
-    Network_Info
-      ::icon(fa fa-globe)
-      IP addresses
-      Domains & subdomains
-      Hosting providers
-      DNS records
-      ASN data
-    System_Info
-      ::icon(fa fa-server)
-      Web server types
-      Software versions
-      Usernames in metadata
-      Exposed services
-    Personal_Intel
-      ::icon(fa fa-user)
-      Social media profiles
-      Family connections
-      Location history
-      Leaked passwords
-      Breach data
-```
+![Personal_Intelligence](Personal_Intelligence.svg)
 
 ---
 
@@ -203,86 +173,78 @@ OSINT is not a single technique or a single tool. It is an entire discipline mad
 Think of the following diagram as your map for the journey ahead. Each branch represents a different area of investigation that we will explore in this handbook.
 
 ```mermaid
-graph LR
+flowchart LR
     classDef root fill:#1f3a5f,stroke:#0f1a2b,color:#fff,font-weight:bold;
     classDef branch fill:#2d5a7b,stroke:#1a3a5c,color:#fff;
     classDef leaf fill:#e0e9f0,stroke:#9bb7d4,color:#1f2e3d;
 
-    A[OSINT Footprinting]:::root
+    Root["OSINT Footprinting"]:::root
 
     subgraph Search["🔍 Search Engines"]
         direction TB
-        B1[Google Dorking]:::leaf
-        B2[Advanced Search]:::leaf
-        B3[FTP / IoT / Video Search]:::leaf
+        S1["Google Dorking"]:::leaf
+        S2["Advanced Search"]:::leaf
+        S3["FTP / IoT / Video Search"]:::leaf
     end
 
     subgraph Social["📱 Social Media"]
         direction TB
-        C1[Trend Analysis]:::leaf
-        C2[Groups & Forums]:::leaf
-        C3[Social Engineering]:::leaf
+        So1["Trend Analysis"]:::leaf
+        So2["Groups & Forums"]:::leaf
+        So3["Social Engineering"]:::leaf
     end
 
     subgraph Email["📧 Emails"]
         direction TB
-        D1[Finding Emails]:::leaf
-        D2[Validating Emails]:::leaf
-        D3[Tracking Emails]:::leaf
+        E1["Finding Emails"]:::leaf
+        E2["Validating Emails"]:::leaf
+        E3["Tracking Emails"]:::leaf
     end
 
     subgraph Creds["🔑 Usernames & Passwords"]
         direction TB
-        E1[Tracking Usernames]:::leaf
-        E2[Leaked Passwords]:::leaf
+        C1["Tracking Usernames"]:::leaf
+        C2["Leaked Passwords"]:::leaf
     end
 
     subgraph Image["🖼️ Images"]
         direction TB
-        F1[Metadata Analysis]:::leaf
-        F2[Reverse Image Search]:::leaf
-        F3[Geolocation - GEOINT]:::leaf
+        I1["Metadata Analysis"]:::leaf
+        I2["Reverse Image Search"]:::leaf
+        I3["Geolocation - GEOINT"]:::leaf
     end
 
     subgraph Web["🌐 Website OSINT"]
         direction TB
-        G1[DNS Footprinting]:::leaf
-        G2[WHOIS Lookup]:::leaf
-        G3[Technology Stack]:::leaf
-        G4[Finding Domains/Directories]:::leaf
+        W1["DNS Footprinting"]:::leaf
+        W2["WHOIS Lookup"]:::leaf
+        W3["Technology Stack"]:::leaf
+        W4["Finding Domains/Directories"]:::leaf
     end
 
     subgraph People["👤 People"]
         direction TB
-        H1[Finding Details]:::leaf
-        H2[Voter Records]:::leaf
-        H3[Jobs & Experience]:::leaf
+        P1["Finding Details"]:::leaf
+        P2["Voter Records"]:::leaf
+        P3["Jobs & Experience"]:::leaf
     end
 
     subgraph Phone["📞 Phone Numbers"]
         direction TB
-        I1[Tracking Numbers]:::leaf
-        I2[Leaked Data]:::leaf
-        I3[Reverse Lookup]:::leaf
+        Ph1["Tracking Numbers"]:::leaf
+        Ph2["Leaked Phone Data"]:::leaf
+        Ph3["Reverse Search"]:::leaf
     end
 
-    A --> Search
-    A --> Social
-    A --> Email
-    A --> Creds
-    A --> Image
-    A --> Web
-    A --> People
-    A --> Phone
+    Root --> Search
+    Root --> Social
+    Root --> Email
+    Root --> Creds
+    Root --> Image
+    Root --> Web
+    Root --> People
+    Root --> Phone
 
-    Search:::branch
-    Social:::branch
-    Email:::branch
-    Creds:::branch
-    Image:::branch
-    Web:::branch
-    People:::branch
-    Phone:::branch
 ```
 
 Do not worry about memorizing all of this right now. Each branch of this map will be explored in detail throughout the handbook. What matters at this stage is understanding the sheer breadth of the discipline. OSINT is not a single trick. It is a structured, methodical approach to gathering and connecting information across many different domains.
